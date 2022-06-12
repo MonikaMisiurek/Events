@@ -1,11 +1,11 @@
 package com.example.serwisagregujacy.model;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToOne;
 
+import javax.persistence.*;
+
+@Entity
 public class Account extends User {
+
 
     @OneToOne()
     private User id;

@@ -1,4 +1,5 @@
 
+
     package com.example.serwisagregujacy.model;
 
     public enum UserLevel {
@@ -7,4 +8,5 @@
         MANAGER,
         PRESENTER
     }
+
 
