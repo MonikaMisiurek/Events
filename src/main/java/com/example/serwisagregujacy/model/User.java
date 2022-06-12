@@ -12,11 +12,14 @@ public class User {
     private String name;
     @Column(name = "PASSWORD")
     private String password;
-    //tu zrobić walidacje na @
+    //todo tu zrobić walidacje na @
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "ROLE")
     private String role;
+
+    @OneToOne()
+    private Account account;
 
     public User() {
     }
