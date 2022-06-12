@@ -12,6 +12,7 @@ public class User {
     private String name;
     @Column(name = "PASSWORD")
     private String password;
+    //tu zrobić walidacje na @
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "ROLE")
