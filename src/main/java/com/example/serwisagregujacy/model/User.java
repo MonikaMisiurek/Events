@@ -3,6 +3,7 @@ package com.example.serwisagregujacy.model;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
 
     @Id
@@ -18,7 +19,7 @@ public class User {
     @Column(name = "ROLE")
     private String role;
 
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
     public User() {
