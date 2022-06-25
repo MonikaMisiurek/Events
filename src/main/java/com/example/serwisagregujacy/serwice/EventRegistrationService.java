@@ -1,10 +1,8 @@
 package com.example.serwisagregujacy.serwice;
 
+import com.example.serwisagregujacy.dto.EventDTO;
 import com.example.serwisagregujacy.model.Events;
-import com.example.serwisagregujacy.model.User;
 import com.example.serwisagregujacy.repository.EventsRepository;
-import com.example.serwisagregujacy.repository.UserRepository;
-import jdk.jfr.Event;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,7 +13,13 @@ public class EventRegistrationService {
     public EventRegistrationService(EventsRepository eventsRepository) {
         this.eventsRepository = eventsRepository;
     }
-    public void addEvents(Events events){
+
+    public void addEvents(EventDTO event){
+
+        Events events = Events.from(event);
+
+        events.toDto();
+
         eventsRepository.save(events);
     }
 }

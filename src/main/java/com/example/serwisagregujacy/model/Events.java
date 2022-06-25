@@ -1,5 +1,6 @@
 package com.example.serwisagregujacy.model;
 
+import com.example.serwisagregujacy.dto.EventDTO;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -27,6 +28,14 @@ public class Events {
         this.name = name;
         this.data = data;
         this.description = description;
+    }
+
+    public static Events from(EventDTO events) {
+        return new Events(events.getId(), events.getName(), events.getData(), events.getDescription());
+    }
+
+    public EventDTO toDto() {
+        return new EventDTO(id, name, data, description);
     }
 
     public Long getId() {

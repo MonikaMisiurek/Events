@@ -1,5 +1,6 @@
 package com.example.serwisagregujacy.controller;
 
+import com.example.serwisagregujacy.dto.EventDTO;
 import com.example.serwisagregujacy.model.Events;
 import com.example.serwisagregujacy.model.User;
 import com.example.serwisagregujacy.serwice.EventRegistrationService;
@@ -22,8 +23,9 @@ public class EventRegistrationController {
     public String getEventRegistration() {
         return ("events/eventsRegistration");
     }
+
     @PostMapping("/eventsRegistration")
-    public RedirectView postAddEvents(@PathVariable Events events){
+    public RedirectView postAddEvents(@PathVariable EventDTO events){
         eventRegistrationService.addEvents(events);
         return new RedirectView("/events/eventsRegistration");
     }
