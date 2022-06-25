@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -28,13 +29,13 @@ public class EventsController {
     }
 
     @PostMapping("/addNewEvents")
-    public RedirectView postAddNewEvents(Events events) {
+    public RedirectView postAddNewEvents(@Valid Events events) {
         eventsService.addNewEvents(events);
         return new RedirectView("/events");
     }
 
     @PostMapping("/editEvents/{id}")
-    public RedirectView postEditEvents(Events events, @PathVariable Long id) {
+    public RedirectView postEditEvents(@Valid Events events, @PathVariable Long id) {
         eventsService.editEvents (events);
         return new RedirectView("/events");
     }
