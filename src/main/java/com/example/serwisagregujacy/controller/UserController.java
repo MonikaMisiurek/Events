@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-    @Controller
+import javax.validation.Valid;
+
+@Controller
     public class UserController {
 
         private final UserService userService;
@@ -29,7 +31,7 @@ import org.springframework.web.servlet.view.RedirectView;
         }
 
         @PostMapping("/editUser/{id}")
-        public RedirectView postEditUser(User user, @PathVariable Long id) {
+        public RedirectView postEditUser(@Valid User user, @PathVariable Long id) {
             userService.editUser(user);
             return new RedirectView("/user/editUser");
         }
