@@ -22,22 +22,31 @@ public class EventsController {
     }
 
     @GetMapping("/events")
-    public String getEventss(Model model) {
+    public String getEvents(Model model) {
         List<Events> item = eventsService.getEvents();
         model.addAttribute("items", item);
         return "events/events";
     }
-
-    @PostMapping("/addNewEvents")
-    public RedirectView postAddNewEvents(@Valid Events events) {
-        eventsService.addNewEvents(events);
-        return new RedirectView("/events");
+    @GetMapping("/addEvents") //tu dodane mn
+    public String getAddEvents() {
+        return ("/events/add");
     }
 
+    @PostMapping("/addEvents")
+    public RedirectView postAddNewEvents(@Valid Events events) {
+        eventsService.addNewEvents(events);
+        return new RedirectView("/events/add"); //zmieniony url
+    }
+    @GetMapping("/editEvents{id}") //tu dodane mn
+    public String getEditEvents(@PathVariable Long id, Model model){
+        Events events = eventsService.getEventsById(id);
+        model.addAttribute("events", events);
+        return ("/eventpage");
+    }
     @PostMapping("/editEvents/{id}")
     public RedirectView postEditEvents(@Valid Events events, @PathVariable Long id) {
         eventsService.editEvents (events);
-        return new RedirectView("/events");
+        return new RedirectView("/eventpage"); //zmieniony url
     }
 
     @PostMapping ("deleteEvents/ {id}")

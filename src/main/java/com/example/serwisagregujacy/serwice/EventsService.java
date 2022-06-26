@@ -29,6 +29,7 @@ public class EventsService {
         eventsRepository.save(events);
     }
 
+    public Events getEventsById(Long id) {return eventsRepository.findById(id).orElse(null); }
     public void editEvents (Events events){
         eventsRepository.save(events);
     }
