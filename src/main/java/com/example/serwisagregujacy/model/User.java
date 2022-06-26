@@ -1,9 +1,7 @@
 package com.example.serwisagregujacy.model;
 
 import com.example.serwisagregujacy.dto.UserDTO;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,6 +10,8 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -32,6 +32,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<Events> enrolledEvent;
+//trzeba zainicjalizowac zmienną
 
     public static User from(UserDTO user) {
         return new User(user.getId(), user.getName(), user.getPassword(), user.getEmail(), user.getEnrolledEvent());
@@ -41,5 +42,7 @@ public class User {
         return new UserDTO(getId(), getName(), getPassword(), getEmail(), getEnrolledEvent());
     }
     /*@OneToOne()
-    private Account account;*/
+    private Account account; to nie
+
+    relacja do enuma z rolą, nie do account, bo bedzie powtorzenie enrolled events*/
 }

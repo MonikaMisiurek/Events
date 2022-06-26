@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -28,13 +29,17 @@ public class Events {
     @Column(name = "DESCRIPTION")
     public String description;
 
+    @ManyToMany(mappedBy = "Events")
+    private Set<User> enrolledUser;
+
 
     public static Events from(EventDTO events) {
-        return new Events(events.getId(), events.getName(), events.getData(), events.getDescription());
+        return new Events(events.getId(), events.getName(), events.getData(), events.getDescription(), events.getEnrolledUser());
     }
 
     public EventDTO toDto() {
-        return new EventDTO(id, name, data, description);
+        return new EventDTO(id, name, data, description, enrolledUser);
     }
 }
+
 

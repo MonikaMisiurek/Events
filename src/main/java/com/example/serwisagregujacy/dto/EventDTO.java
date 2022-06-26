@@ -1,8 +1,10 @@
 package com.example.serwisagregujacy.dto;
 
+import com.example.serwisagregujacy.model.User;
 import lombok.Value;
 
 import java.util.Date;
+import java.util.Set;
 
 @Value
 public class EventDTO {
@@ -10,4 +12,5 @@ public class EventDTO {
     String name;
     Date data;
     String description;
+    Set<User> enrolledUser;
 }

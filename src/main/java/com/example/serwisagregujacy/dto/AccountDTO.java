@@ -1,18 +1,18 @@
 package com.example.serwisagregujacy.dto;
 
-import com.example.serwisagregujacy.model.Account;
 import com.example.serwisagregujacy.model.Events;
+import com.example.serwisagregujacy.model.User;
+import com.example.serwisagregujacy.model.UserLevel;
 import lombok.Value;
 
 import java.util.Set;
 
 @Value
-public class UserDTO {
+public class AccountDTO {
     Long id;
     String name;
-    String password;
     String email;
-    Set<Events> enrolledEvent;
-
+    UserLevel role;
+    Set<Events> enrolledEvents;
 
 }

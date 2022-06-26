@@ -1,10 +1,14 @@
 package com.example.serwisagregujacy.controller;
 
+import com.example.serwisagregujacy.dto.AccountDTO;
+import com.example.serwisagregujacy.dto.UserDTO;
 import com.example.serwisagregujacy.model.Account;
 import com.example.serwisagregujacy.service.MyAccountService;
 import com.example.serwisagregujacy.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -33,6 +37,9 @@ public class MyAccountController {
         myAccountService.editMyAccount(account);
         return new RedirectView("/myAccount");
     }
-
-
+    @PostMapping
+    public RedirectView postAddAccount(@PathVariable AccountDTO account){
+        myAccountService.addAccount(account);
+        return new RedirectView("/registration/account");
+    }
 }
