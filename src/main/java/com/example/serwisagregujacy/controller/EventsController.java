@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@RequestMapping("/events")
 public class EventsController {
 
     private final EventsService eventsService;
@@ -21,24 +22,24 @@ public class EventsController {
         this.eventsService = eventsService;
     }
 
-    @GetMapping("/events")
-    public String getEvents(Model model) {
+    @GetMapping
+    public String allEvents(Model model) {
         List<Events> item = eventsService.getEvents();
         model.addAttribute("items", item);
         return "events/events";
     }
-    @GetMapping("/addEvents") //tu dodane mn
-    public String getAddEvents() {
-        return ("/events/add");
-    }
+//    @GetMapping("/addEvents") //tu dodane mn
+//    public String getAddEvents() {
+//        return ("/events/add");
+//    }
 
-    @PostMapping("/addEvents")
-    public RedirectView postAddNewEvents(@Valid Events events) {
+    @PostMapping
+    public RedirectView newEvent(@Valid Events events) {
         eventsService.addNewEvents(events);
         return new RedirectView("/events/add"); //zmieniony url
     }
-    @GetMapping("/editEvents{id}") //tu dodane mn
-    public String getEditEvents(@PathVariable Long id, Model model){
+    @GetMapping("/{id}") //tu dodane mn
+    public String editEvent(@PathVariable Long id, Model model){
         Events events = eventsService.getEventsById(id);
         model.addAttribute("events", events);
         return ("/eventpage");

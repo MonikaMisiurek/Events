@@ -1,6 +1,9 @@
 package com.example.serwisagregujacy.dto;
 
+import com.example.serwisagregujacy.model.Events;
 import lombok.Value;
+
+import java.util.Set;
 
 @Value
 public class UserDTO {
@@ -8,4 +11,5 @@ public class UserDTO {
     String name;
     String password;
     String email;
+    Set<Events> enrolledEvent;
 }

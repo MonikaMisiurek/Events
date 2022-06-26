@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@RequestMapping("/contact")
 public class ContactController {
 
     public final ContactService contactService;
@@ -18,13 +19,13 @@ public class ContactController {
         this.contactService = contactService;
     }
 
-    @GetMapping("/contact")
-    public String getContact() {
+    @GetMapping
+    public String allContacts() {
         return "contact/contact";
     }
 
-    @PostMapping("/addNewContact")
-    public RedirectView postAddNewContact(Contact contact) {
+    @PostMapping
+    public RedirectView addContact(Contact contact) {
         contactService.addNewContact(contact);
         return new RedirectView("/contact");
     }
