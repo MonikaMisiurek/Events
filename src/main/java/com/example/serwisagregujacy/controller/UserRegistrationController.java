@@ -1,10 +1,8 @@
 package com.example.serwisagregujacy.controller;
 
-import com.example.serwisagregujacy.model.User;
-import com.example.serwisagregujacy.serwice.UserRegistrationService;
-import com.example.serwisagregujacy.serwice.UserService;
+import com.example.serwisagregujacy.dto.UserDTO;
+import com.example.serwisagregujacy.service.UserRegistrationService;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +21,7 @@ public class UserRegistrationController {
    }
 
     @PostMapping("/registration")
-    public RedirectView postAddPerson(@PathVariable User user) {
+    public RedirectView postAddPerson(@PathVariable UserDTO user) {
         userRegistrationService.addUser(user);
         return new RedirectView("/registration/registration");
     }

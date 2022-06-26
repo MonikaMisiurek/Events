@@ -1,12 +1,10 @@
 package com.example.serwisagregujacy.controller;
 
 import com.example.serwisagregujacy.model.Events;
-import com.example.serwisagregujacy.serwice.EventsService;
+import com.example.serwisagregujacy.service.EventsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
@@ -44,14 +42,14 @@ public class EventsController {
         model.addAttribute("events", events);
         return ("/eventpage");
     }
-    @PostMapping("/editEvents/{id}")
-    public RedirectView postEditEvents(@Valid Events events, @PathVariable Long id) {
+    @PutMapping("/{id}")
+    public RedirectView modifyEvent(@Valid Events events, @PathVariable Long id) {
         eventsService.editEvents (events);
         return new RedirectView("/eventpage"); //zmieniony url
     }
 
-    @PostMapping ("deleteEvents/ {id}")
-    public RedirectView postDeleteEvents (Events events, @PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public RedirectView deleteEvent (Events events, @PathVariable Long id){
         eventsService.deleteEvents(events);
         return new RedirectView("/events");
     }

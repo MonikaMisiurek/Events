@@ -1,11 +1,9 @@
 package com.example.serwisagregujacy.controller;
 
 import com.example.serwisagregujacy.model.Contact;
-import com.example.serwisagregujacy.serwice.ContactService;
+import com.example.serwisagregujacy.service.ContactService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -30,14 +28,14 @@ public class ContactController {
         return new RedirectView("/contact");
     }
 
-    @PostMapping("/editContact/{id}")
-    public RedirectView postEditContact(Contact contact, @PathVariable Long id) {
+    @PutMapping("/{id}")
+    public RedirectView modifyContact(Contact contact, @PathVariable Long id) {
         contactService.editContact(contact);
         return new RedirectView("/contact");
     }
 
-    @PostMapping("delete/deleteContact/{id}")
-    public RedirectView postDeleteContact (Contact contact, @PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public RedirectView deleteContact (Contact contact, @PathVariable Long id){
         contactService.deleteContact(contact);
         return new RedirectView("/contact");
     }

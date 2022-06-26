@@ -1,12 +1,10 @@
 package com.example.serwisagregujacy.controller;
 
 import com.example.serwisagregujacy.model.User;
-import com.example.serwisagregujacy.serwice.UserService;
+import com.example.serwisagregujacy.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
@@ -30,13 +28,13 @@ import javax.validation.Valid;
             return ("/user/editUser");
         }
 
-        @PostMapping("/editUser/{id}")
+        @PutMapping("/{id}")
         public RedirectView postEditUser(@Valid User user, @PathVariable Long id) {
             userService.editUser(user);
             return new RedirectView("/user/editUser");
         }
 
-        @PostMapping("/delete/{id}")
+        @DeleteMapping("/{id}")
         public RedirectView deleteUser(@PathVariable Long id) {
             userService.deleteUser(id);
             return new RedirectView("/user/deleteUser");
