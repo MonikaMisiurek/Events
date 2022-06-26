@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/users")
     public class UserController {
 
         private final UserService userService;
@@ -17,19 +18,20 @@ import javax.validation.Valid;
         public UserController(UserService userService) {
             this.userService = userService;
         }
-        @GetMapping("/users")
+
+        @GetMapping
         public String getUsers() {
             return ("/users/users");
         }
+
         @GetMapping("/editUsers/{id}")
         public String getEditUser(@PathVariable Long id, Model model) {
             User user = userService.getUserById(id);
             model.addAttribute("user", user);
-            return ("/user/editUser");
+            return ("/users/editUser");
         }
-
         @PutMapping("/{id}")
-        public RedirectView postEditUser(@Valid User user, @PathVariable Long id) {
+        public RedirectView modifyUser(@Valid User user, @PathVariable Long id) {
             userService.editUser(user);
             return new RedirectView("/user/editUser");
         }

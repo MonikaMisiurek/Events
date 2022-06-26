@@ -24,28 +24,24 @@ public class EventsController {
     public String allEvents(Model model) {
         List<Events> item = eventsService.getEvents();
         model.addAttribute("items", item);
-        return "events/events";
+        return ("events/events");
     }
-//    @GetMapping("/addEvents") //tu dodane mn
-//    public String getAddEvents() {
-//        return ("/events/add");
-//    }
 
     @PostMapping
     public RedirectView newEvent(@Valid Events events) {
         eventsService.addNewEvents(events);
-        return new RedirectView("/events/add"); //zmieniony url
+        return new RedirectView("/events/add");
     }
     @GetMapping("/{id}") //tu dodane mn
     public String editEvent(@PathVariable Long id, Model model){
         Events events = eventsService.getEventsById(id);
         model.addAttribute("events", events);
-        return ("/eventpage");
+        return ("/eventPage");
     }
     @PutMapping("/{id}")
     public RedirectView modifyEvent(@Valid Events events, @PathVariable Long id) {
         eventsService.editEvents (events);
-        return new RedirectView("/eventpage"); //zmieniony url
+        return new RedirectView("/eventPage");
     }
 
     @DeleteMapping("/{id}")
@@ -54,6 +50,5 @@ public class EventsController {
         return new RedirectView("/events");
     }
 
-    // sortowanie na przyszłe i przeszłe
 
 }

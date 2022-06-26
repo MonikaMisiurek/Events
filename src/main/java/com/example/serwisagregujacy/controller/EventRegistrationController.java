@@ -6,9 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@RequestMapping("/events")
 public class EventRegistrationController {
 
     private final EventRegistrationService eventRegistrationService;
@@ -17,14 +19,14 @@ public class EventRegistrationController {
         this.eventRegistrationService = eventRegistrationService;
     }
 
-    @GetMapping("/eventsRegistration")
-    public String getEventRegistration() {
-        return ("events/eventsRegistration");
+    @GetMapping
+    public String EventRegistration() {
+        return ("/eventsRegistration");
     }
 
-    @PostMapping("/eventsRegistration")
-    public RedirectView postAddEvents(@PathVariable EventDTO events){
+    @PostMapping
+    public RedirectView addEvents(@PathVariable EventDTO events){
         eventRegistrationService.addEvents(events);
-        return new RedirectView("/events/eventsRegistration");
+        return new RedirectView("/eventsRegistration");
     }
 }
