@@ -70,3 +70,4 @@ public class Events {
         this.description = description;
     }
 }
+//usunąć getery i setesy dodać lombook
