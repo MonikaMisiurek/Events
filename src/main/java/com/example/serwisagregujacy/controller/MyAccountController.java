@@ -1,11 +1,11 @@
 package com.example.serwisagregujacy.controller;
 
 import com.example.serwisagregujacy.model.Account;
-import com.example.serwisagregujacy.serwice.MyAccountService;
-import com.example.serwisagregujacy.serwice.UserService;
+import com.example.serwisagregujacy.service.MyAccountService;
+import com.example.serwisagregujacy.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
@@ -28,7 +28,7 @@ public class MyAccountController {
         return ("/myAccount");
     }
 
-    @PostMapping("/editMyAccount")
+    @PutMapping("/editMyAccount")
     public RedirectView postEditMyAccount(@Valid Account account) {
         myAccountService.editMyAccount(account);
         return new RedirectView("/myAccount");

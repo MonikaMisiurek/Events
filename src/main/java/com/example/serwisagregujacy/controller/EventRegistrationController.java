@@ -1,9 +1,7 @@
 package com.example.serwisagregujacy.controller;
 
 import com.example.serwisagregujacy.dto.EventDTO;
-import com.example.serwisagregujacy.model.Events;
-import com.example.serwisagregujacy.model.User;
-import com.example.serwisagregujacy.serwice.EventRegistrationService;
+import com.example.serwisagregujacy.service.EventRegistrationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

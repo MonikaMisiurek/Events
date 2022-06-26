@@ -1,4 +1,4 @@
-package com.example.serwisagregujacy.serwice;
+package com.example.serwisagregujacy.service;
 
 import com.example.serwisagregujacy.model.User;
 import com.example.serwisagregujacy.repository.UserRepository;
