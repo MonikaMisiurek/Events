@@ -16,14 +16,14 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
     @Column(name = "NAME")
-    private String name;
+    protected String name;
     @Column(name = "PASSWORD")
-    private String password;
+    protected String password;
     //todo tu zrobić walidacje na @
     @Column(name = "EMAIL")
-    private String email;
+    protected String email;
 
 
     @ManyToMany
@@ -31,7 +31,7 @@ public class User {
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private Set<Events> enrolledEvent;
+    public Set<Events> enrolledEvent;
 //trzeba zainicjalizowac zmienną
 
     public static User from(UserDTO user) {
