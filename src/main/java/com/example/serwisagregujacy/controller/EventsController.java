@@ -27,11 +27,11 @@ public class EventsController {
         return ("events/events");
     }
 
-    @PostMapping
-    public RedirectView newEvent(@Valid Events events) {
-        eventsService.addNewEvents(events);
-        return new RedirectView("/events/add");
-    }
+  //  @PostMapping
+//    public RedirectView newEvent(@Valid Events events) {
+//        eventsService.addNewEvents(events);
+//        return new RedirectView("/events/add");
+//    }
     @GetMapping("/{id}") //tu dodane mn
     public String editEvent(@PathVariable Long id, Model model){
         Events events = eventsService.getEventsById(id);

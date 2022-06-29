@@ -19,10 +19,10 @@ public class EventRegistrationController {
         this.eventRegistrationService = eventRegistrationService;
     }
 
-    @GetMapping
-    public String EventRegistration() {
-        return ("/eventsRegistration");
-    }
+//    @GetMapping
+//    public String EventRegistration() {
+//        return ("/eventsRegistration");
+//    }
 
     @PostMapping
     public RedirectView addEvents(@PathVariable EventDTO events){
