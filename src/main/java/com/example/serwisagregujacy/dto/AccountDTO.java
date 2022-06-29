@@ -12,6 +12,6 @@ public class AccountDTO {
     String name;
     String email;
     UserLevel role;
-    Set<Events> enrolledEvents;
+    Set<Events> events;
 
 }

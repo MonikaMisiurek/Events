@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -29,16 +30,15 @@ public class Events {
     @Column(name = "DESCRIPTION")
     public String description;
 
-    @ManyToMany(mappedBy = "Events")
-    private Set<User> enrolledUser;
-
+    @ManyToMany(mappedBy = "events")
+    private Set<User> users = new HashSet<>();
 
     public static Events from(EventDTO events) {
-        return new Events(events.getId(), events.getName(), events.getData(), events.getDescription(), events.getEnrolledUser());
+        return new Events(events.getId(), events.getName(), events.getData(), events.getDescription(), events.getUsers());
     }
 
     public EventDTO toDto() {
-        return new EventDTO(id, name, data, description, enrolledUser);
+        return new EventDTO(id, name, data, description, users);
     }
 }
 

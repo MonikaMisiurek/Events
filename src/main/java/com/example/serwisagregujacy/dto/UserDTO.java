@@ -12,7 +12,7 @@ public class UserDTO {
     String name;
     String password;
     String email;
-    Set<Events> enrolledEvent;
+    Set<Events> events;
 
 
 }

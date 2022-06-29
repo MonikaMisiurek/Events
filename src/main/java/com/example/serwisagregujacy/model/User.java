@@ -4,6 +4,7 @@ import com.example.serwisagregujacy.dto.UserDTO;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -28,18 +29,21 @@ public class User {
 
     @ManyToMany
     @JoinTable(
+            name = "user_enrolled_event",
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    public Set<Events> enrolledEvent;
-//trzeba zainicjalizowac zmienną
+    public Set<Events> events = new HashSet<>();
+
+
+
 
     public static User from(UserDTO user) {
-        return new User(user.getId(), user.getName(), user.getPassword(), user.getEmail(), user.getEnrolledEvent());
+        return new User(user.getId(), user.getName(), user.getPassword(), user.getEmail(), user.getEvents());
     }
 
     public UserDTO toDto() {
-        return new UserDTO(getId(), getName(), getPassword(), getEmail(), getEnrolledEvent());
+        return new UserDTO(getId(), getName(), getPassword(), getEmail(), getEvents());
     }
     /*@OneToOne()
     private Account account; to nie

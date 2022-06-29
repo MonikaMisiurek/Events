@@ -12,5 +12,5 @@ public class EventDTO {
     String name;
     Date data;
     String description;
-    Set<User> enrolledUser;
+    Set<User> users;
 }
