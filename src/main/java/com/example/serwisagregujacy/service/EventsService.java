@@ -25,16 +25,17 @@ public class EventsService {
         return eventsRepository.findByDataBetweenOrderByDataDesc(begin, end);
     }
 
-    public void addNewEvents (Events events){
-        eventsRepository.save(events);
-    }
+//    public void addNewEvents (Events events){
+//        eventsRepository.save(events);
+//    } czy ona jest potrzebna , jak ona się ma to tworzenia evetntsDTO
 
-    public Events getEventsById(Long id) {return eventsRepository.findById(id).orElse(null); }
+    public Events getEventsById(Long id) {
+        return eventsRepository.findById(id).orElse(null); } //po kliknięciu na konkretny event
     public void editEvents (Events events){
         eventsRepository.save(events);
     }
 
-    public void deleteEvents (Events events){
+    public void deleteEvents (Events events){// czy ta metoda wie który event usunąć czy nie trzeba dodać findBy...
         eventsRepository.delete(events);
     }
 

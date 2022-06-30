@@ -1,7 +1,6 @@
 package com.example.serwisagregujacy.dto;
 
 import com.example.serwisagregujacy.model.Events;
-import com.example.serwisagregujacy.model.User;
 import com.example.serwisagregujacy.model.UserLevel;
 import lombok.Value;
 
@@ -13,6 +12,7 @@ public class AccountDTO {
     String name;
     String email;
     UserLevel role;
-    Set<Events> enrolledEvents;
+    Set<Events> events;
 
 }
+

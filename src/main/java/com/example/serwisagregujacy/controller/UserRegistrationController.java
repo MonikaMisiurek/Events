@@ -10,22 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("/registration")
 public class UserRegistrationController {
 
     private final UserRegistrationService userRegistrationService;
     public UserRegistrationController(UserRegistrationService userRegistrationService) {
         this.userRegistrationService = userRegistrationService;
     }
-   @GetMapping
+   @GetMapping("/registration")
    public String getRegistration(){
-        return ("/registration/registration");
+        return ("/registration");
    }
 
-    @PostMapping
+    @PostMapping("/registration")
     public RedirectView postAddPerson(@PathVariable UserDTO user) {
         userRegistrationService.addUser(user);
-        return new RedirectView("/registration/registration");
+        return new RedirectView("/registration");
     }
 
 
