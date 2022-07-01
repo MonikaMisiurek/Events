@@ -1,6 +1,5 @@
 package com.example.serwisagregujacy.controller;
 
-import com.example.serwisagregujacy.dto.EventDTO;
 import com.example.serwisagregujacy.model.Events;
 import com.example.serwisagregujacy.service.EventsService;
 import org.springframework.stereotype.Controller;
@@ -27,11 +26,16 @@ public class EventsController {
         model.addAttribute("items", item);
         return ("events/events");
     }
-
     @PostMapping
     public RedirectView newEvent(@Valid Events events) {
         eventsService.addNewEvents(events);
         return new RedirectView("/events/add");
+    } // to ma być podpięte pod przycisk submit form
+
+    @GetMapping("/{id}")
+    public String getEventsById(@PathVariable Long id){
+        eventsService.getEventsById(id);
+    return "eventPage";
     }
 
 // DODAWANIE EVENTU W REGISTRATION:
@@ -41,7 +45,7 @@ public class EventsController {
 //    return new RedirectView("/events/eventsRegistration");
 //}
 //    }
-//    @GetMapping("/{id}") //tu dodane mn
+//    @GetMapping("/{id}")
 //    public String editEvent(@PathVariable Long id, Model model){
 //        Events events = eventsService.getEventsById(id);
 //        model.addAttribute("events", events);
