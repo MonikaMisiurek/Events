@@ -43,24 +43,26 @@ public class EventsController {
         eventsService.getEventsById(id);
     return "/eventPage";
     }
-    @PutMapping("/{id}")
-    public String editEvent(@PathVariable Long id, Model model){
+
+    @PutMapping("/{id}") //to nie wykorzystuje met. editEvents. Czy to zdublowane wyświetlenie eventu?
+    public String editEvent(@PathVariable Long id, Model model) {
         Events events = eventsService.getEventsById(id);
         model.addAttribute("events", events);
         return ("/eventPage");
     }
+
 // ZDUBLOWANA EDYCJA EVENTU, ALE INNA: WCZEŚNIEJ JEDNO BYŁO GETEM, A DRUGIE PUTEM
 //    @PutMapping("/{id}")
 //    public RedirectView modifyEvent(@Valid Events events, @PathVariable Long id) {
 //        eventsService.editEvents (events);
 //        return new RedirectView("/eventPage");
 //    }
-//
-//    @DeleteMapping("/{id}")
-//    public RedirectView deleteEvent (Events events, @PathVariable Long id){
-//        eventsService.deleteEvents(events);
-//        return new RedirectView("/events");
-//    }
+
+    @DeleteMapping("/{id}")
+    public RedirectView deleteEvent (Events events, @PathVariable Long id){
+        eventsService.deleteEvents(events);
+        return new RedirectView("/events");
+    }
 
 
 }
