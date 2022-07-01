@@ -20,35 +20,49 @@ public class EventsController {
         this.eventsService = eventsService;
     }
 
-//    @GetMapping
-//    public String allEvents(Model model) {
-//        List<Events> item = eventsService.getEvents();
-//        model.addAttribute("items", item);
-//        return ("events/events");
-//    }
-//
-//    @PostMapping
-//    public RedirectView newEvent(@Valid Events events) {
-//        eventsService.addNewEvents(events);
-//        return new RedirectView("/events/add");
-//    }
-//    @GetMapping("/{id}") //tu dodane mn
-//    public String editEvent(@PathVariable Long id, Model model){
-//        Events events = eventsService.getEventsById(id);
-//        model.addAttribute("events", events);
-//        return ("/eventPage");
-//    }
+    @GetMapping
+    public String getEvents(Model model) {
+        List<Events> item = eventsService.getEvents();
+        model.addAttribute("items", item);
+        return ("events/events");
+    }
+    @PostMapping
+    public RedirectView newEvent(@Valid Events events) {
+        eventsService.addNewEvents(events);
+        return new RedirectView("/events/add");
+    } // to ma być podpięte pod przycisk submit form
+
+    // DODAWANIE EVENTU W REGISTRATION:
+//@PostMapping("/eventsRegistration")
+//public RedirectView postAddEvents(@PathVariable Events events){
+//    eventRegistrationService.addEvents(events);
+//    return new RedirectView("/events/eventsRegistration");
+//}
+    @GetMapping("/{id}") // mn to dopisałam
+    public String getEventsById(@PathVariable Long id){
+        eventsService.getEventsById(id);
+    return "/eventPage";
+    }
+
+    @PutMapping("/{id}") //to nie wykorzystuje met. editEvents. Czy to zdublowane wyświetlenie eventu?
+    public String editEvent(@PathVariable Long id, Model model) {
+        Events events = eventsService.getEventsById(id);
+        model.addAttribute("events", events);
+        return ("/eventPage");
+    }
+
+// ZDUBLOWANA EDYCJA EVENTU, ALE INNA: WCZEŚNIEJ JEDNO BYŁO GETEM, A DRUGIE PUTEM
 //    @PutMapping("/{id}")
 //    public RedirectView modifyEvent(@Valid Events events, @PathVariable Long id) {
 //        eventsService.editEvents (events);
 //        return new RedirectView("/eventPage");
 //    }
-//
-//    @DeleteMapping("/{id}")
-//    public RedirectView deleteEvent (Events events, @PathVariable Long id){
-//        eventsService.deleteEvents(events);
-//        return new RedirectView("/events");
-//    }
+
+    @DeleteMapping("/{id}")
+    public RedirectView deleteEvent (Events events, @PathVariable Long id){
+        eventsService.deleteEvents(events);
+        return new RedirectView("/events");
+    }
 
 
 }
