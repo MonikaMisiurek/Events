@@ -32,25 +32,24 @@ public class EventsController {
         return new RedirectView("/events/add");
     } // to ma być podpięte pod przycisk submit form
 
-    @GetMapping("/{id}")
-    public String getEventsById(@PathVariable Long id){
-        eventsService.getEventsById(id);
-    return "eventPage";
-    }
-
-// DODAWANIE EVENTU W REGISTRATION:
+    // DODAWANIE EVENTU W REGISTRATION:
 //@PostMapping("/eventsRegistration")
 //public RedirectView postAddEvents(@PathVariable Events events){
 //    eventRegistrationService.addEvents(events);
 //    return new RedirectView("/events/eventsRegistration");
 //}
-//    }
-//    @GetMapping("/{id}")
-//    public String editEvent(@PathVariable Long id, Model model){
-//        Events events = eventsService.getEventsById(id);
-//        model.addAttribute("events", events);
-//        return ("/eventPage");
-//    }
+    @GetMapping("/{id}") // mn to dopisałam
+    public String getEventsById(@PathVariable Long id){
+        eventsService.getEventsById(id);
+    return "/eventPage";
+    }
+    @PutMapping("/{id}")
+    public String editEvent(@PathVariable Long id, Model model){
+        Events events = eventsService.getEventsById(id);
+        model.addAttribute("events", events);
+        return ("/eventPage");
+    }
+// ZDUBLOWANA EDYCJA EVENTU, ALE INNA: WCZEŚNIEJ JEDNO BYŁO GETEM, A DRUGIE PUTEM
 //    @PutMapping("/{id}")
 //    public RedirectView modifyEvent(@Valid Events events, @PathVariable Long id) {
 //        eventsService.editEvents (events);
