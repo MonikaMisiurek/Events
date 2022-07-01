@@ -1,5 +1,6 @@
 package com.example.serwisagregujacy.controller;
 
+import com.example.serwisagregujacy.dto.EventDTO;
 import com.example.serwisagregujacy.model.Events;
 import com.example.serwisagregujacy.service.EventsService;
 import org.springframework.stereotype.Controller;
@@ -20,17 +21,25 @@ public class EventsController {
         this.eventsService = eventsService;
     }
 
-//    @GetMapping
-//    public String allEvents(Model model) {
-//        List<Events> item = eventsService.getEvents();
-//        model.addAttribute("items", item);
-//        return ("events/events");
-//    }
-//
-//    @PostMapping
-//    public RedirectView newEvent(@Valid Events events) {
-//        eventsService.addNewEvents(events);
-//        return new RedirectView("/events/add");
+    @GetMapping
+    public String getEvents(Model model) {
+        List<Events> item = eventsService.getEvents();
+        model.addAttribute("items", item);
+        return ("events/events");
+    }
+
+    @PostMapping
+    public RedirectView newEvent(@Valid Events events) {
+        eventsService.addNewEvents(events);
+        return new RedirectView("/events/add");
+    }
+
+// DODAWANIE EVENTU W REGISTRATION:
+//@PostMapping("/eventsRegistration")
+//public RedirectView postAddEvents(@PathVariable Events events){
+//    eventRegistrationService.addEvents(events);
+//    return new RedirectView("/events/eventsRegistration");
+//}
 //    }
 //    @GetMapping("/{id}") //tu dodane mn
 //    public String editEvent(@PathVariable Long id, Model model){
