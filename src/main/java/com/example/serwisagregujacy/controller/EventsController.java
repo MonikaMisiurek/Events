@@ -32,6 +32,8 @@ public class EventsController {
         return new RedirectView("/events/add");
     } // to ma być podpięte pod przycisk submit form
 
+
+
     // DODAWANIE EVENTU W REGISTRATION:
 //@PostMapping("/eventsRegistration")
 //public RedirectView postAddEvents(@PathVariable Events events){
@@ -63,6 +65,14 @@ public class EventsController {
         eventsService.deleteEvents(events);
         return new RedirectView("/events");
     }
+
+ // tu wpisujemy frazę i szuka po tytule
+    @GetMapping("/{name}")
+    public String getEventByName (@PathVariable String name){
+        eventsService.getEventsByName(name);
+        return ("/events");
+    }
+
 
 
 }
