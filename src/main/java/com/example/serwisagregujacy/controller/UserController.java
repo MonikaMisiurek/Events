@@ -11,7 +11,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/users") //działa w apce bez widoków
     public class UserController {
 
         private final UserService userService;
@@ -20,7 +19,7 @@ import javax.validation.Valid;
             this.userService = userService;
         }
 
-        @GetMapping
+        @GetMapping("/users")
         public String getUsers() {
             return ("/users/users");
         }
@@ -36,19 +35,19 @@ import javax.validation.Valid;
         return new RedirectView("/registration");
          }
 
-        @GetMapping("/editUsers/{id}")
+        @GetMapping("/user/editUsers/{id}")
         public String getEditUser(@PathVariable Long id, Model model) {
             User user = userService.getUserById(id);
             model.addAttribute("user", user);
             return ("/users/editUser");
         }
-        @PutMapping("/{id}")
+        @PutMapping("/user/{id}")
         public RedirectView modifyUser(@Valid User user, @PathVariable Long id) {
             userService.editUser(user);
             return new RedirectView("/user/editUser");
         }
 
-        @DeleteMapping("/{id}")
+        @DeleteMapping("/user/{id}")
         public RedirectView deleteUser(@PathVariable Long id) {
             userService.deleteUser(id);
             return new RedirectView("/user/deleteUser");
