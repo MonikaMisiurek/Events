@@ -46,4 +46,6 @@ public class EventsService {
         eventsRepository.delete(events);
     }
 
+    public List<Events> getEventsByName(String name) {
+        return eventsRepository.findByName(name); }
 }

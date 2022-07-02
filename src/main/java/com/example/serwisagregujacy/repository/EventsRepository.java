@@ -12,4 +12,5 @@ public interface EventsRepository extends JpaRepository<Events,Long> {
 
     List<Events> findByDataBetweenOrderByDataDesc(Date start, Date end);
 
+    List<Events> findByName(String name);
 }
