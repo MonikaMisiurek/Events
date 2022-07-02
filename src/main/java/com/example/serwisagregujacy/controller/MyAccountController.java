@@ -16,7 +16,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/myAccount")
 public class MyAccountController {
 
     private final MyAccountService myAccountService;
@@ -27,19 +26,19 @@ public class MyAccountController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/myAccount")
     public String getMyAccount() {
         return ("/myAccount");
     }
 
-    @PutMapping("/editMyAccount")
+    @PutMapping("/myAccount/editMyAccount")
     public RedirectView modifyEditMyAccount(@Valid Account account) {
         myAccountService.editMyAccount(account);
         return new RedirectView("/myAccount");
     }
-    @PostMapping
+    @PostMapping("/myAccount")
     public RedirectView postAddAccount(@PathVariable AccountDTO account){
         myAccountService.addAccount(account);
-        return new RedirectView("/registration/account");
+        return new RedirectView("myAccount");
     }
 }

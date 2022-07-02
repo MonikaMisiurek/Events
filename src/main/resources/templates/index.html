@@ -7,20 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="">
 
+
     <!--== CSS Files ==-->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="css/style.css" rel="stylesheet" media="screen">
-    <link href="css/font-awesome.css" rel="stylesheet" media="screen">
-    <link href="css/owl.carousel.css" rel="stylesheet" media="screen">
-    <link href="css/flexslider.css" rel="stylesheet" media="screen">
-    <link href="css/fancySelect.css" rel="stylesheet" media="screen">
-    <link href="css/responsive.css" rel="stylesheet" media="screen">
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/owl.carousel.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/flexslider.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/fancySelect.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/responsive.css}" rel="stylesheet" media="screen">
 
     <!--== Google Fonts ==-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
 
 </head>
 <body>
@@ -48,13 +50,11 @@
                         <!--== Navigation Menu ==-->
                         <ul class="nav navbar-nav">
                             <li class="current"><a href="#header" th:href="@{/}">Home</a></li>
-                            <li><a href="#about" th:href="@{/about}">About us</a></li>
-                            <li><a href="#schedule">Events</a></li>
+                            <li><a href="#about" th:href="@{/about}">About</a></li>
+                            <li><a href="#schedule"th:href="@{/events}">Events</a></li>
                             <li><a href="#blog">Blog</a></li>
-                            <li><a href="#prices">Pricing</a></li>
-                            <li><a href="#team">Our Team</a></li>
-                            <li><a href="#testimonial">Testimonials</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#contact"th:href="@{/myaccount}">Account</a></li>
+                            <li><a href="#contact"th:href="@{/contact}">Contact</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -69,7 +69,7 @@
                 <div class="entry-content">
                     <p><span class="start-text"><b>From THE MARCH 7, 2014</b></span></p>
                     <h4 class="entry-title"><a href="#">Organizing World class events</a></h4>
-                    <h5><span><b>Schrodinger confirms that Germany international ...</b></span></h5>
+                    <h5><span><b>cośtamcośtam</b></span></h5>
                 </div>
             </div>
         </div>
@@ -97,18 +97,18 @@
 
         <!--== Javascript Files ==-->
         <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <script src="js/jquery-2.1.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.scrollTo.js"></script>
-        <script src="js/jquery.nav.js"></script>
-        <script src="js/jquery.flexslider.js"></script>
-        <script src="js/jquery.accordion.js"></script>
-        <script src="js/jquery.placeholder.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
-        <script src="js/gmap3.js"></script>
-        <script src="js/fancySelect.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/main.js"></script>
+        <script type="text/javascript" th:src = "@{/js/jquery-2.1.0.min.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/bootstrap.min.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/jquery.scrollTo.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/jquery.nav.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/jquery.flexslider.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/jquery.accordion.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/jquery.placeholder.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/jquery.fitvids.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/gmap3.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/fancySelect.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/owl.carousel.min.js}"></script>
+        <script type="text/javascript" th:src = "@{/js/main.js}"></script>
         <script type="text/javascript">
 
             $(document).ready(function() {

@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/events")
 public class EventsController {
 
     private final EventsService eventsService;
@@ -20,16 +19,16 @@ public class EventsController {
         this.eventsService = eventsService;
     }
 
-    @GetMapping
+    @GetMapping("/events")
     public String getEvents(Model model) {
         List<Events> item = eventsService.getEvents();
         model.addAttribute("items", item);
-        return ("events/events");
+        return ("/events");
     }
-    @PostMapping
+    @PostMapping("/events")
     public RedirectView newEvent(@Valid Events events) {
         eventsService.addNewEvents(events);
-        return new RedirectView("/events/add");
+        return new RedirectView("/events");
     } // to ma być podpięte pod przycisk submit form
 
 
@@ -40,13 +39,13 @@ public class EventsController {
 //    eventRegistrationService.addEvents(events);
 //    return new RedirectView("/events/eventsRegistration");
 //}
-    @GetMapping("/{id}") // mn to dopisałam
+    @GetMapping("/events/{id}") // mn to dopisałam
     public String getEventsById(@PathVariable Long id){
         eventsService.getEventsById(id);
-    return "/eventPage";
+    return ("/eventPage");
     }
 
-    @PutMapping("/{id}") //to nie wykorzystuje met. editEvents. Czy to zdublowane wyświetlenie eventu?
+    @PutMapping("/events/{id}") //to nie wykorzystuje met. editEvents. Czy to zdublowane wyświetlenie eventu?
     public String editEvent(@PathVariable Long id, Model model) {
         Events events = eventsService.getEventsById(id);
         model.addAttribute("events", events);
@@ -60,14 +59,14 @@ public class EventsController {
 //        return new RedirectView("/eventPage");
 //    }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/events/{id}")
     public RedirectView deleteEvent (Events events, @PathVariable Long id){
         eventsService.deleteEvents(events);
         return new RedirectView("/events");
     }
 
  // tu wpisujemy frazę i szuka po tytule
-    @GetMapping("/{name}")
+    @GetMapping("/events/{name}")
     public String getEventByName (@PathVariable String name){
         eventsService.getEventsByName(name);
         return ("/events");
