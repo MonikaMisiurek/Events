@@ -1,5 +1,6 @@
 package com.example.serwisagregujacy.controller;
 
+import com.example.serwisagregujacy.dto.UserDTO;
 import com.example.serwisagregujacy.model.User;
 import com.example.serwisagregujacy.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/users") //działa w apce bez widoków
     public class UserController {
 
         private final UserService userService;
@@ -23,6 +24,17 @@ import javax.validation.Valid;
         public String getUsers() {
             return ("/users/users");
         }
+
+        @GetMapping("/registration")
+         public String getRegistration(){
+        return ("/registration");
+    }
+
+      @PostMapping("/registration")
+          public RedirectView postAddPerson(@PathVariable UserDTO user) {
+        userService.addUser(user);
+        return new RedirectView("/registration");
+         }
 
         @GetMapping("/editUsers/{id}")
         public String getEditUser(@PathVariable Long id, Model model) {
