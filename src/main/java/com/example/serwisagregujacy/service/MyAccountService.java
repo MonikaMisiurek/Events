@@ -30,6 +30,12 @@ public class MyAccountService {
         myAccountRepository.save(account1);
     }
 
+    public void addAccount(Account account){
+        myAccountRepository.save(account);
+    }
 
+    public Account getById(Long id) {
+        return myAccountRepository.findById(id).orElseThrow();
+    }
 
 }

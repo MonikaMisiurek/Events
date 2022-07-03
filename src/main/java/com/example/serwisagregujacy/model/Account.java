@@ -22,7 +22,7 @@ public class Account extends User {
 
     @Column(name = "ROLE")
     @Enumerated(EnumType.STRING)
-    private UserLevel role;
+    private UserLevel role = UserLevel.USER;
     public Account(Long id, String name, String email, UserLevel role, Set<Events> events) {
         this.id = id;
         this.name = name;
