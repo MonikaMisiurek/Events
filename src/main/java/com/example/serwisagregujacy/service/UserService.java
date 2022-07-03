@@ -13,11 +13,10 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final MyAccountService accountService;
 
-    public UserService(UserRepository userRepository, MyAccountService accountService) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.accountService = accountService;
+        //this.accountService = accountService;
     }
 
     public void editUser(User user) {
@@ -38,10 +37,13 @@ public class UserService {
     }
 
     public void createUser(UserDTO user) {
-        var user1 = User.from(user);
-        var saved = userRepository.save(user1);
-        var account = new Account(saved.getId(), saved.getName(), saved.getEmail(), UserLevel.USER, saved.getEvents());
-        accountService.addAccount(account);
+        User user1 = User.from(user);
+        user1.toDto();
+        userRepository.save(user1);
+       // var user1 = User.from(user);
+       // var saved = userRepository.save(user1);
+       // var user2 = new User(saved.getId(), saved.getName(), saved.getPassword(), saved.getEmail(), UserLevel.USER, saved.getEvents());
+        //accountService.addAccount(ff);
     }
 // napisana nowa
 //    public void createUser(User user){

@@ -17,28 +17,29 @@ import javax.validation.Valid;
 
 @Controller
 public class MyAccountController {
+//
+//    private final MyAccountService myAccountService;
+//    private final UserService userService;
+//
+//    public MyAccountController(MyAccountService myAccountService, UserService userService) {
+//        this.myAccountService = myAccountService;
+//        this.userService = userService;
+//    }
 
-    private final MyAccountService myAccountService;
-    private final UserService userService;
+//    @GetMapping("/myAccount")
+//    public String getMyAccount() {
+//        return ("/myAccount");
+//    }
+//
+//    @PutMapping("/myAccount/editMyAccount")
+//    public RedirectView modifyEditMyAccount(@Valid Account account) {
+//        myAccountService.editMyAccount(account);
+//        return new RedirectView("/myAccount");
+//    }
 
-    public MyAccountController(MyAccountService myAccountService, UserService userService) {
-        this.myAccountService = myAccountService;
-        this.userService = userService;
-    }
-
-    @GetMapping("/myAccount")
-    public String getMyAccount() {
-        return ("/myAccount");
-    }
-
-    @PutMapping("/myAccount/editMyAccount")
-    public RedirectView modifyEditMyAccount(@Valid Account account) {
-        myAccountService.editMyAccount(account);
-        return new RedirectView("/myAccount");
-    }
-    @PostMapping("/myAccount")
-    public RedirectView postAddAccount(@PathVariable AccountDTO account){
-        myAccountService.addAccount(account);
-        return new RedirectView("myAccount");
-    }
+//    @PostMapping("/myAccount")
+//    public RedirectView postAddAccount(@PathVariable AccountDTO account){
+//        myAccountService.addAccount(account);
+//        return new RedirectView("myAccount");
+//    }
 }
