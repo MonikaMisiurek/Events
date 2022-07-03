@@ -25,7 +25,9 @@ public class User {
     //todo tu zrobić walidacje na @
     @Column(name = "EMAIL")
     protected String email;
-
+    @Column(name = "ROLE")
+    @Enumerated(EnumType.STRING)
+    private UserLevel role = UserLevel.USER;
 
     @ManyToMany
     @JoinTable(
@@ -39,11 +41,11 @@ public class User {
 
 
     public static User from(UserDTO user) {
-        return new User(user.getId(), user.getName(), user.getPassword(), user.getEmail(), user.getEvents());
+        return new User(user.getId(), user.getName(), user.getPassword(), user.getEmail(), user.getRole(), user.getEvents());
     }
 
     public UserDTO toDto() {
-        return new UserDTO(getId(), getName(), getPassword(), getEmail(), getEvents());
+        return new UserDTO(getId(), getName(), getPassword(), getEmail(), getRole(), getEvents());
     }
     /*@OneToOne()
     private Account account; to nie

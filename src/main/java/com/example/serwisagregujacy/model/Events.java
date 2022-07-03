@@ -26,6 +26,7 @@ public class Events {
     @Column(name = "NAME")
     public String name;
     @DateTimeFormat(pattern = "yy-MM-dd")
+    //todo przedział czasu - rozpoczecie i zakonczenie eventu
     public Date data;
     @Column(name = "DESCRIPTION")
     public String description;

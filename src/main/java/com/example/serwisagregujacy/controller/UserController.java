@@ -2,6 +2,7 @@ package com.example.serwisagregujacy.controller;
 
 import com.example.serwisagregujacy.dto.UserDTO;
 import com.example.serwisagregujacy.model.User;
+import com.example.serwisagregujacy.model.UserLevel;
 import com.example.serwisagregujacy.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,11 +37,11 @@ public class UserController {
     @GetMapping("/registration")
     public ModelAndView getRegistration(ModelAndView modelAndView) {
         modelAndView.setViewName("registration");
-        modelAndView.addObject("newUser", new UserDTO(0L, "", "", "", Set.of()));
+        modelAndView.addObject("newUser", new UserDTO(0L, "", "", "", UserLevel.USER, Set.of()));
         return modelAndView;
     }
 
-    // powinna dodawać uzytkownika
+    // porownaj z mappingiem w MyAccountController
     @PostMapping("/registration")
     public String createUser(@ModelAttribute UserDTO user) {
         userService.createUser(user);
