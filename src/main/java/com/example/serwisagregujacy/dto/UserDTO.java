@@ -13,6 +13,4 @@ public class UserDTO {
     String password;
     String email;
     Set<Events> events;
-
-
 }
