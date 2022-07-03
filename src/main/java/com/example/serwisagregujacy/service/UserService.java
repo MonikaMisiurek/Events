@@ -1,9 +1,7 @@
 package com.example.serwisagregujacy.service;
 
 import com.example.serwisagregujacy.dto.UserDTO;
-import com.example.serwisagregujacy.model.Account;
 import com.example.serwisagregujacy.model.User;
-import com.example.serwisagregujacy.model.UserLevel;
 import com.example.serwisagregujacy.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -36,14 +34,10 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public void createUser(UserDTO user) {
-        User user1 = User.from(user);
-        user1.toDto();
-        userRepository.save(user1);
-       // var user1 = User.from(user);
-       // var saved = userRepository.save(user1);
-       // var user2 = new User(saved.getId(), saved.getName(), saved.getPassword(), saved.getEmail(), UserLevel.USER, saved.getEvents());
-        //accountService.addAccount(ff);
+    public void createUser(UserDTO dto) {
+        var user = User.from(dto);
+        user.toDto();
+        userRepository.save(user);
     }
 // napisana nowa
 //    public void createUser(User user){

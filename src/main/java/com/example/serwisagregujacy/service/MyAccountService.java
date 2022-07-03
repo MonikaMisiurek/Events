@@ -1,10 +1,5 @@
 package com.example.serwisagregujacy.service;
 
-import com.example.serwisagregujacy.dto.AccountDTO;
-import com.example.serwisagregujacy.dto.UserDTO;
-import com.example.serwisagregujacy.model.Account;
-import com.example.serwisagregujacy.model.User;
-import com.example.serwisagregujacy.repository.MyAccountRepository;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,6 +1,5 @@
 package com.example.serwisagregujacy.dto;
 
-import com.example.serwisagregujacy.model.Account;
 import com.example.serwisagregujacy.model.Events;
 import com.example.serwisagregujacy.model.UserLevel;
 import lombok.Value;

@@ -1,10 +1,26 @@
 package com.example.serwisagregujacy.model;
 
 import com.example.serwisagregujacy.dto.UserDTO;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -13,6 +29,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode(exclude = {"events", "password", "role"})
+@ToString(exclude = "events")
 public class User {
 
     @Id
@@ -27,7 +45,7 @@ public class User {
     protected String email;
     @Column(name = "ROLE")
     @Enumerated(EnumType.STRING)
-    private UserLevel role = UserLevel.USER;
+    private UserLevel role;
 
     @ManyToMany
     @JoinTable(
@@ -38,16 +56,19 @@ public class User {
     public Set<Events> events = new HashSet<>();
 
 
-
-
-    public static User from(UserDTO user) {
-        return new User(user.getId(), user.getName(), user.getPassword(), user.getEmail(), user.getRole(), user.getEvents());
+    public static User from(UserDTO dto) {
+        return new User(
+                dto.getId(),
+                dto.getName(),
+                dto.getPassword(),
+                dto.getEmail(),
+                Optional.ofNullable(dto.getRole()).orElse(UserLevel.USER),
+                dto.getEvents()
+        );
     }
 
     public UserDTO toDto() {
         return new UserDTO(getId(), getName(), getPassword(), getEmail(), getRole(), getEvents());
     }
-    /*@OneToOne()
-    private Account account; to nie
-    relacja do enuma z rolą, nie do account, bo bedzie powtorzenie enrolled events*/
+
 }
