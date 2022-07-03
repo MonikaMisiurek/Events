@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<link th:href="@{css/bootstrap.css}" rel="stylesheet" media="screen">
-<link th:href="@{css/style.css}" rel="stylesheet" media="screen">
-<link th:href="@{css/font-awesome.css}" rel="stylesheet" media="screen">
-<link th:href="@{css/owl.carousel.css}" rel="stylesheet" media="screen">
-<link th:href="@{css/flexslider.css}" rel="stylesheet" media="screen">
-<link th:href="@{css/fancySelect.css}" rel="stylesheet" media="screen">
-<link th:href="@{css/responsive.css}" rel="stylesheet" media="screen">
+<link th:href="@{css/registration.css}" rel="stylesheet" media="screen">
+
 
 <!--== Google Fonts ==-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -28,7 +23,7 @@
 
                             <form>
 
-                                <div class="form-outline mb-4">
+                                <div class="form-outline mb-4"th:action="@{/index}" th:method="post">
                                     <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example1cg">Your Name</label>
                                 </div>
@@ -56,12 +51,10 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center">
-                                    <button type="button"
+                                    <button type="submit"
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                 </div>
 
-                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
-                                                                                                        class="fw-bold text-body"><u>Login here</u></a></p>
 
                             </form>
 

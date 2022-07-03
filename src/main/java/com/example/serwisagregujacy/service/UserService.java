@@ -29,9 +29,16 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public void addUser(UserDTO user){
+    public void createUser(UserDTO user){
         User user1 = User.from(user);
 //        user.toDto();
         userRepository.save(user1);
     }
+// napisana nowa
+//    public void createUser(User user){
+//        userRepository.save(user);
+//
+//    }
+
+
 }

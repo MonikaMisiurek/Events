@@ -19,38 +19,53 @@ import javax.validation.Valid;
             this.userService = userService;
         }
 
-        @GetMapping("/users")
+        // wyświetla profil
+        @GetMapping("/user")
         public String getUsers() {
-            return ("/users/users");
+            return ("/user");
         }
 
+        // wyświetla formuarz rejestracyjny
         @GetMapping("/registration")
          public String getRegistration(){
         return ("/registration");
     }
 
+    // powinna dodawać uzytkownika
       @PostMapping("/registration")
-          public RedirectView postAddPerson(@PathVariable UserDTO user) {
-        userService.addUser(user);
-        return new RedirectView("/registration");
+          public RedirectView createUser(@PathVariable UserDTO user) {
+        userService.createUser(user);
+        return new RedirectView("/");
          }
 
-        @GetMapping("/user/editUsers/{id}")
+
+
+
+
+
+         // po co nam to?
+        @GetMapping("/user/{id}")
         public String getEditUser(@PathVariable Long id, Model model) {
             User user = userService.getUserById(id);
             model.addAttribute("user", user);
             return ("/users/editUser");
         }
+
+        // modyfikacja usera
         @PutMapping("/user/{id}")
         public RedirectView modifyUser(@Valid User user, @PathVariable Long id) {
             userService.editUser(user);
             return new RedirectView("/user/editUser");
         }
 
+        //usunięcie usera
         @DeleteMapping("/user/{id}")
         public RedirectView deleteUser(@PathVariable Long id) {
             userService.deleteUser(id);
             return new RedirectView("/user/deleteUser");
         }
+
+
+
     }
 
